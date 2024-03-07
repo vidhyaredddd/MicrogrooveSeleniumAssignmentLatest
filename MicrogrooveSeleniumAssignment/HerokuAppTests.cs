@@ -4,6 +4,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,14 +55,16 @@ namespace MicrogrooveSeleniumAssignment
                 dateInput.SendKeys("04242023");
                 dateInput.SendKeys(Keys.Tab);
 
-                Thread.Sleep(2000);
-                //Verify date is set to default
-                Assert.Equal("03/06/2024", dateInput.GetAttribute("value"));
+                //Verify date is set to current date
+                DateTime currentDate = DateTime.Now;
+                string actual = DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+                Assert.Equal(actual, dateInput.GetAttribute("value"));
+               
                 // Submit the form
                 IWebElement submitButton = driver.FindElement(By.XPath("//a[text()='Submit']"));
                 submitButton.Click();
 
-                // Wait for the confirmation message
+                // Verify success message
                 IWebElement confirmationMessage = driver.FindElement(By.XPath("//div[@class=\"alert alert-success\"]"));
                 Assert.Equal("The form was successfully submitted!",confirmationMessage.Text);
                 
