@@ -43,7 +43,6 @@ namespace MicrogrooveSeleniumAssignment
 
                 // Find the dropdown element
                 IWebElement dropdown = driver.FindElement(By.Id("select-menu"));
-                // Wrap the dropdown element in a SelectElement object
                 SelectElement select = new SelectElement(dropdown);
                 // Select by visible text
                 select.SelectByText("5-9");
@@ -109,7 +108,6 @@ namespace MicrogrooveSeleniumAssignment
 
                 // Find the dropdown element
                 IWebElement dropdown = driver.FindElement(By.Id("select-menu"));
-                // Wrap the dropdown element in a SelectElement object
                 SelectElement select = new SelectElement(dropdown);
                 // Select by visible text
                 select.SelectByText("5-9");
@@ -121,14 +119,13 @@ namespace MicrogrooveSeleniumAssignment
                 dateInput.SendKeys("04242023");
                 dateInput.SendKeys(Keys.Tab);
 
-                Thread.Sleep(2000);
-                //Verify date is set to default
+                //Verify date is set to current date
                 Assert.Equal("03/06/2024", dateInput.GetAttribute("value"));
                 // Submit the form
                 IWebElement submitButton = driver.FindElement(By.XPath("//a[text()='Submit']"));
                 submitButton.Click();
 
-                // Wait for the confirmation message
+                // Verify success message
                 IWebElement confirmationMessage = driver.FindElement(By.XPath("//div[@class=\"alert alert-success\"]"));
                 Assert.Equal("The form was successfully submitted!", confirmationMessage.Text);
 
