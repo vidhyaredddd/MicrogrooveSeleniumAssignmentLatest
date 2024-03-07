@@ -19,6 +19,7 @@ namespace MicrogrooveSeleniumAssignment
         {
             // Set up Chrome WebDriver
             IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
 
             // Navigate to the form URL
             driver.Navigate().GoToUrl("https://formy-project.herokuapp.com/form");
@@ -84,6 +85,7 @@ namespace MicrogrooveSeleniumAssignment
         {
             // Set up Chrome WebDriver
             IWebDriver driver = new FirefoxDriver();
+            driver.Manage().Window.Maximize();
 
             // Navigate to the form URL
             driver.Navigate().GoToUrl("https://formy-project.herokuapp.com/form");
@@ -140,7 +142,6 @@ namespace MicrogrooveSeleniumAssignment
                 driver.Quit();
             }
         }
-
 
     }
 }
