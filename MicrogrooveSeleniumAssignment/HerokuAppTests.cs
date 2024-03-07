@@ -2,12 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace MicrogrooveSeleniumAssignment
@@ -60,7 +55,7 @@ namespace MicrogrooveSeleniumAssignment
                 string actual = DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
                 Assert.Equal(actual, dateInput.GetAttribute("value"));
                
-                // Submit the form
+                // Submitting the form
                 IWebElement submitButton = driver.FindElement(By.XPath("//a[text()='Submit']"));
                 submitButton.Click();
 
@@ -102,8 +97,8 @@ namespace MicrogrooveSeleniumAssignment
                 IWebElement jobtitleIput = driver.FindElement(By.Id("job-title"));
                 jobtitleIput.SendKeys("Tester");
 
-                IWebElement eductionradiobutton = driver.FindElement(By.Id("radio-button-2"));
-                eductionradiobutton.Click();
+                IWebElement educationradiobutton = driver.FindElement(By.Id("radio-button-2"));
+                educationradiobutton.Click();
 
                 IWebElement sexCheckbox = driver.FindElement(By.Id("checkbox-2"));
                 sexCheckbox.Click();
@@ -122,8 +117,11 @@ namespace MicrogrooveSeleniumAssignment
                 dateInput.SendKeys(Keys.Tab);
 
                 //Verify date is set to current date
-                Assert.Equal("03/06/2024", dateInput.GetAttribute("value"));
-                // Submit the form
+                DateTime currentDate = DateTime.Now;
+                string actual = DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+                Assert.Equal(actual, dateInput.GetAttribute("value"));
+
+                // Submitting the form
                 IWebElement submitButton = driver.FindElement(By.XPath("//a[text()='Submit']"));
                 submitButton.Click();
 
